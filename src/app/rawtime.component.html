@@ -1,3 +1,13 @@
-<h1>
-  {{title}}
-</h1>
+<table>
+    <tr>
+      <th>Project</th>
+    </tr>
+    <button (click)="moveDayIndex(+1)">+</button>
+    <button (click)="moveDayIndex(-1)">-</button>
+    <tr *ngFor="let p of projects">
+      <td>{{p.name}}</td>
+      <td *ngFor="let i of dayPositionRange">
+        <time-input [dayIndex]="i" [projectId]="p.id"></time-input>
+      </td>
+    </tr>
+</table>
