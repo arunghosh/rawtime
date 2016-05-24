@@ -16,9 +16,9 @@ export class ProjectService {
     //   name: 'Zine Screen',
     //   id: 10, 
     // }])
-    return this.jsonp
-      .get('http://app.rawdatatech.com/api/projects/')
+    return this.http
+      .get('http://localhost:8000/api/projects/')
       .toPromise()
-      .then(response => response);
+      .then(response => response.json());
   } 
 }

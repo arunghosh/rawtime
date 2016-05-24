@@ -36,6 +36,7 @@ export class RawtimeAppComponent {
     this.dayStart = 0;
     this._setDayPositionRange();
     this.projectService.getProjects().then(response => {
+      console.log(response);
       this.projects = response;
     });
   }
