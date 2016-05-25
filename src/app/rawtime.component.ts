@@ -15,9 +15,7 @@ export class RawtimeAppComponent {
   dayStart: number;
   dayPositionRange: number[];
 
-  constructor(private projectService: ProjectService) {
-
-  }
+  constructor(private projectService: ProjectService) { }
 
   moveDayIndex(delta: number) {
     this.dayStart += delta;
@@ -35,7 +33,7 @@ export class RawtimeAppComponent {
   ngOnInit() {
     this.dayStart = 0;
     this._setDayPositionRange();
-    this.projectService.getProjects().then(response => {
+    this.projectService.getProjects().subscribe(response => {
       console.log(response);
       this.projects = response;
     });

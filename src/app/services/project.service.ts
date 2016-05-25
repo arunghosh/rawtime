@@ -1,24 +1,35 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import {URLSearchParams, Jsonp} from '@angular/http';
-import 'rxjs/add/operator/toPromise';
+
+const URL = 'http://localhost:8000/';
 
 @Injectable()
 export class ProjectService {
 
-  constructor(private http: Http, private jsonp: Jsonp) {}
-  
-  getProjects(){
-    // return Promise.resolve([{
-    //   name: 'NDash',
-    //   id: 1
-    // }, {
-    //   name: 'Zine Screen',
-    //   id: 10, 
-    // }])
+  constructor(private http: Http, private jsonp: Jsonp) { }
+
+  getProjects() {
     return this.http
-      .get('http://localhost:8000/api/projects/')
-      .toPromise()
-      .then(response => response.json());
-  } 
+      .get(URL + 'api/projects/')
+      .map(response => response.json());
+  }
+
+  getTime(projectId: number, dateIndex: number) {
+    return this.http
+      .get(URL + `api/project-time/${projectId}/${dateIndex}/`  )
+      .map(response => response.json());
+  }
+
+  updateTime(projectId: number, dateIndex: number, time: number) {
+    var data = JSON.stringify({
+      date: dateIndex,
+      time: time,
+      project: projectId
+    });
+    return this.http
+      .post(URL + 'api/project-time/', data)
+      .map(response => response.json());
+  }
+  
 }
