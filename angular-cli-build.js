@@ -11,7 +11,10 @@ module.exports = function(defaults) {
       'es6-shim/es6-shim.js',
       'reflect-metadata/**/*.+(js|js.map)',
       'rxjs/**/*.+(js|js.map)',
-      '@angular/**/*.+(js|js.map)'
+      '@angular/**/*.+(js|js.map)',
+      '@angular2-material/**/*.+(js|js.map)',
+      'moment/**/*.+(js|js.map)',
+      'moment-range/**/*.+(js|js.map)',
     ]
   });
 };

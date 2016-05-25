@@ -1,12 +1,23 @@
+<style>
+  .time {
+    font-size: 12px;
+    width: 60px;
+  }
+</style>
+
+<md-toolbar [color]="primary">
+  <span>RawTime</span>
+</md-toolbar>
+<button (click)="moveDayIndex(+1)">+</button>
+<button (click)="moveDayIndex(-1)">-</button>
 <table>
     <tr>
       <th>Project</th>
+      <!--<th *ngFor="let item of i.dayPositionRange"></th>-->
     </tr>
-    <button (click)="moveDayIndex(+1)">+</button>
-    <button (click)="moveDayIndex(-1)">-</button>
     <tr *ngFor="let p of projects">
       <td>{{p.name}}</td>
-      <td *ngFor="let i of dayPositionRange">
+      <td *ngFor="let i of dayPositionRange" class="time">
         <time-input [dayIndex]="i" [projectId]="p.id"></time-input>
       </td>
     </tr>
